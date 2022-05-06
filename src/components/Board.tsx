@@ -23,6 +23,7 @@ export default function Board() {
       height={window.innerHeight}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
+      onWheel={handleWheel}
     >
       <Layer>
         {polygons.map((polygon, i) => {
@@ -120,6 +121,35 @@ export default function Board() {
     setIsMouseOverStartPoint(false);
   }
 
+  function handleWheel(e: KonvaEventObject<WheelEvent>) {
+    e.evt.preventDefault();
+
+    const stage = e.target.getStage();
+
+    if (!stage) {
+      return;
+    }
+
+    const oldScale = stage.scaleX();
+    const pointer = stage.getPointerPosition();
+
+    const mousePointTo = {
+      x: (pointer!.x - stage.x()) / oldScale,
+      y: (pointer!.y - stage.y()) / oldScale,
+    };
+
+    const scaleBy = 0.95;
+    const newScale = e.evt.deltaY > 0 ? oldScale * scaleBy : oldScale / scaleBy;
+
+    stage.scale({ x: newScale, y: newScale });
+
+    const newPos = {
+      x: pointer!.x - mousePointTo.x * newScale,
+      y: pointer!.y - mousePointTo.y * newScale,
+    };
+    stage.position(newPos);
+  }
+
   function handleMouseMove(e: KonvaEventObject<MouseEvent>) {
     const position = getPosition(e);
 
@@ -128,8 +158,8 @@ export default function Board() {
 
   function getPosition(e: KonvaEventObject<MouseEvent>): TPosition {
     return [
-      e.target.getStage()?.getPointerPosition()?.x!,
-      e.target.getStage()?.getPointerPosition()?.y!,
+      e.target.getStage()!.getRelativePointerPosition()!.x,
+      e.target.getStage()!.getRelativePointerPosition()!.y,
     ];
   }
 }
