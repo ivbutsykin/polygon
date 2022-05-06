@@ -19,11 +19,15 @@ export default function Board() {
 
   return (
     <Stage
-      width={window.innerWidth}
-      height={window.innerHeight}
+      width={window.innerWidth / 1.2}
+      height={window.innerHeight / 1.2}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onWheel={handleWheel}
+      style={{
+        backgroundColor: '#fafafa',
+        maxWidth: window.innerWidth / 1.2,
+      }}
     >
       <Layer>
         {polygons.map((polygon, i) => {
