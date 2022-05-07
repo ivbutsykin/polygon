@@ -1,8 +1,8 @@
 import { KonvaEventObject } from 'konva/lib/Node';
 import { Group, Line, Circle } from 'react-konva';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setIsMouseOverStartPoint } from '../../store';
-import { IPolygon } from '../../types';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { setIsMouseOverStartPoint } from '../store';
+import { IPolygon } from '../types';
 
 interface IPolygonProps {
   polygon: IPolygon;

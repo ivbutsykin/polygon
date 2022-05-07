@@ -7,4 +7,4 @@ export {
   setIsMouseOverStartPoint,
 } from './polygon/slice';
 
-export { setPointerPosition } from './user/slice';
+export { setTool, setPointerPosition } from './user/slice';

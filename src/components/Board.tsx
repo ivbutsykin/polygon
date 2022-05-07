@@ -1,7 +1,7 @@
 import { KonvaEventObject } from 'konva/lib/Node';
 import { ReactReduxContext, Provider } from 'react-redux';
 import { Stage, Layer } from 'react-konva';
-import Polygon from './Polygon/Polygon';
+import Polygon from './Polygon';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   setPolygon,
@@ -11,7 +11,7 @@ import {
   addPolygon,
 } from '../store';
 import { getPosition } from '../helpers';
-import { STAGE_WIDTH, STAGE_HEIGHT, SCALE_BY } from '../constants';
+import { STAGE_WIDTH, STAGE_HEIGHT, SCALE_BY, TOOLS } from '../constants';
 
 export default function Board() {
   const dispatch = useAppDispatch();
@@ -19,6 +19,7 @@ export default function Board() {
   const { polygon, isMouseOverStartPoint } = useAppSelector(
     (state) => state.polygon
   );
+  const { tool } = useAppSelector((state) => state.user);
 
   return (
     <ReactReduxContext.Consumer>
@@ -29,9 +30,11 @@ export default function Board() {
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onWheel={handleWheel}
+          draggable={isDraggable()}
           style={{
             backgroundColor: '#fafafa',
             maxWidth: STAGE_WIDTH,
+            cursor: getCursor(),
           }}
         >
           <Provider store={store}>
@@ -48,9 +51,8 @@ export default function Board() {
   );
 
   function handleMouseDown(e: KonvaEventObject<MouseEvent>) {
-    const tool = 'polygon';
     switch (tool) {
-      case 'polygon':
+      case TOOLS.POLYGON:
         const point = getPosition(e);
 
         if (!polygon) {
@@ -104,5 +106,27 @@ export default function Board() {
     const position = getPosition(e);
 
     dispatch(setPointerPosition(position));
+  }
+
+  function isDraggable() {
+    switch (tool) {
+      case TOOLS.POLYGON:
+        return false;
+      case TOOLS.DRAG:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function getCursor() {
+    switch (tool) {
+      case TOOLS.POLYGON:
+        return 'crosshair';
+      case TOOLS.DRAG:
+        return 'grab';
+      default:
+        return 'default';
+    }
   }
 }
