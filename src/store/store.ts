@@ -1,10 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import polygonsReducer from './polygons/slice';
+import undoable, { combineFilters, excludeAction } from 'redux-undo';
+import polygonsReducer, { editPolygon } from './polygons/slice';
 import newShapeReducer from './new-shape/slice';
 import canvasReducer from './canvas/slice';
 
 const rootReducer = combineReducers({
-  polygons: polygonsReducer,
+  polygons: undoable(polygonsReducer, {
+    filter: combineFilters(excludeAction(editPolygon.type)),
+  }),
   newShape: newShapeReducer,
   canvas: canvasReducer,
 });
