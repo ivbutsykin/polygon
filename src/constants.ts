@@ -7,6 +7,7 @@ const SCALE_BY = 1.05;
 
 /* TOOLS */
 const TOOLS: ITools = {
+  SELECT: 'select',
   DRAG: 'drag',
   POLYGON: 'polygon',
 };

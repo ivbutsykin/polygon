@@ -1,7 +1,8 @@
 export type TPosition = [number, number];
-export type TTool = 'polygon' | 'drag';
+export type TTool = 'select' | 'drag' | 'polygon';
 
 export interface IPolygon {
+  id: string;
   points: TPosition[];
   isClosed: boolean;
 }

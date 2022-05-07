@@ -1,13 +1,4 @@
-import {
-  AppBar,
-  Toolbar,
-  Stack,
-  Box,
-  IconButton,
-  ButtonGroup,
-} from '@mui/material';
-import PanToolIcon from '@mui/icons-material/PanTool';
-import PolylineIcon from '@mui/icons-material/Polyline';
+import { AppBar, Toolbar, Stack } from '@mui/material';
 import { Board, Tools } from './components';
 
 function App() {
@@ -16,7 +7,7 @@ function App() {
       <AppBar position="fixed">
         <Toolbar />
       </AppBar>
-      <Stack position="fixed" top="45%" left={12}>
+      <Stack position="fixed" top="40%" left={12}>
         <Tools />
       </Stack>
       <Stack

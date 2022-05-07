@@ -2,18 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 import { TPosition, TTool } from '../../types';
 import { TOOLS } from '../../constants';
 
-interface IUserSlice {
+interface ICanvasSlice {
   tool: TTool;
   pointerPosition: TPosition;
 }
 
-const initialState: IUserSlice = {
+const initialState: ICanvasSlice = {
   tool: TOOLS.POLYGON,
   pointerPosition: [0, 0],
 };
 
-export const userSlice = createSlice({
-  name: 'user',
+export const canvasSlice = createSlice({
+  name: 'canvas',
   initialState,
   reducers: {
     setTool: (state, action) => {
@@ -26,6 +26,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setTool, setPointerPosition } = userSlice.actions;
+export const { setTool, setPointerPosition } = canvasSlice.actions;
 
-export default userSlice.reducer;
+export default canvasSlice.reducer;

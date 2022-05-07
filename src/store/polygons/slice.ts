@@ -16,9 +16,18 @@ export const polygonsSlice = createSlice({
     addPolygon: (state, action) => {
       state.polygons.push(action.payload);
     },
+
+    editPolygon: (state, action) => {
+      const { id, points, isClosed } = action.payload;
+      const polygon = state.polygons.find((p) => p.id === id);
+      if (polygon) {
+        polygon.points = points;
+        polygon.isClosed = isClosed;
+      }
+    },
   },
 });
 
-export const { addPolygon } = polygonsSlice.actions;
+export const { addPolygon, editPolygon } = polygonsSlice.actions;
 
 export default polygonsSlice.reducer;

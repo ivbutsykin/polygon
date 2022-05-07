@@ -1,12 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import polygonsReducer from './polygons/slice';
-import polygonReducer from './polygon/slice';
-import userReducer from './user/slice';
+import newShapeReducer from './new-shape/slice';
+import canvasReducer from './canvas/slice';
 
 const rootReducer = combineReducers({
   polygons: polygonsReducer,
-  polygon: polygonReducer,
-  user: userReducer,
+  newShape: newShapeReducer,
+  canvas: canvasReducer,
 });
 
 const store = configureStore({
