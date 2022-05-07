@@ -1,12 +1,13 @@
-import { AppBar, Toolbar, Stack } from '@mui/material';
-import { Board, Tools } from './components';
+import { ActionCreators } from 'redux-undo';
+import { Stack } from '@mui/material';
+import { Bar, Board, Tools } from './components';
+import { useAppDispatch } from './hooks';
+import { resetNewShape } from './store';
 
 function App() {
   return (
     <>
-      <AppBar position="fixed">
-        <Toolbar />
-      </AppBar>
+      <Bar />
       <Stack position="fixed" top="40%" left={12}>
         <Tools />
       </Stack>

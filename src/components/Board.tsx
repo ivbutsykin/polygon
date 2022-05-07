@@ -16,7 +16,9 @@ import { STAGE_WIDTH, STAGE_HEIGHT, SCALE_BY, TOOLS } from '../constants';
 
 export default function Board() {
   const dispatch = useAppDispatch();
-  const { polygons } = useAppSelector((state) => state.polygons);
+  const {
+    present: { polygons },
+  } = useAppSelector((state) => state.polygons);
   const { newShape, isMouseOverStartPoint } = useAppSelector(
     (state) => state.newShape
   );
