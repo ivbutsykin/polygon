@@ -17,7 +17,7 @@ import canvasReducer from './canvas/slice';
 
 const rootReducer = combineReducers({
   polygons: undoable(polygonsReducer, {
-    filter: combineFilters(excludeAction(editPolygon.type)),
+    filter: combineFilters(excludeAction([editPolygon.type])),
   }),
   newShape: newShapeReducer,
   canvas: canvasReducer,

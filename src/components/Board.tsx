@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { KonvaEventObject } from 'konva/lib/Node';
 import { Provider, useStore } from 'react-redux';
 import { Stage, Layer } from 'react-konva';
@@ -10,9 +11,15 @@ import {
   resetNewShape,
   setPointerPosition,
   addPolygon,
+  setWindowSize,
 } from '../store';
 import { getPosition } from '../helpers';
-import { STAGE_WIDTH, STAGE_HEIGHT, SCALE_BY, TOOLS } from '../constants';
+import {
+  STAGE_WIDTH_COEF,
+  STAGE_HEIGHT_COEF,
+  SCALE_BY,
+  TOOLS,
+} from '../constants';
 
 export default function Board() {
   const dispatch = useAppDispatch();
@@ -22,20 +29,28 @@ export default function Board() {
   const { newShape, isMouseOverStartPoint } = useAppSelector(
     (state) => state.newShape
   );
-  const { tool } = useAppSelector((state) => state.canvas);
+  const { tool, windowSize } = useAppSelector((state) => state.canvas);
   const store = useStore();
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <Stage
-      width={STAGE_WIDTH}
-      height={STAGE_HEIGHT}
+      width={windowSize.width / STAGE_WIDTH_COEF}
+      height={windowSize.height / STAGE_HEIGHT_COEF}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onWheel={handleWheel}
       draggable={isDraggable()}
       style={{
         backgroundColor: '#fafafa',
-        maxWidth: STAGE_WIDTH,
+        maxWidth: windowSize.width / STAGE_WIDTH_COEF,
         cursor: getCursor(),
       }}
     >
@@ -116,6 +131,12 @@ export default function Board() {
     const position = getPosition(e);
 
     dispatch(setPointerPosition(position));
+  }
+
+  function handleResize() {
+    dispatch(
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    );
   }
 
   function isDraggable() {

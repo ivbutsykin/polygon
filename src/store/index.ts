@@ -1,4 +1,4 @@
-export { addPolygon, editPolygon } from './polygons/slice';
+export { addPolygon, editPolygon, resetPolygons } from './polygons/slice';
 
 export {
   setNewShape,
@@ -7,4 +7,4 @@ export {
   setIsMouseOverStartPoint,
 } from './new-shape/slice';
 
-export { setTool, setPointerPosition } from './canvas/slice';
+export { setTool, setPointerPosition, setWindowSize } from './canvas/slice';

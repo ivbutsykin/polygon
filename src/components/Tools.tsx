@@ -6,8 +6,9 @@ import PanToolIcon from '@mui/icons-material/PanTool';
 import PolylineIcon from '@mui/icons-material/Polyline';
 import UndoIcon from '@mui/icons-material/Undo';
 import RedoIcon from '@mui/icons-material/Redo';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { setTool, resetNewShape } from '../store';
+import { setTool, resetNewShape, resetPolygons } from '../store';
 import { TOOLS } from '../constants';
 import { TTool } from '../types';
 
@@ -76,6 +77,11 @@ export default function Tools() {
             </IconButton>
           </span>
         </Tooltip>
+        <Tooltip title="Clear frame" placement="right">
+          <IconButton onClick={handleClearFrame} size="large">
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
       </ButtonGroup>
     </Box>
   );
@@ -115,5 +121,10 @@ export default function Tools() {
   function handleRedo() {
     dispatch(resetNewShape());
     dispatch(ActionCreators.redo());
+  }
+
+  function handleClearFrame() {
+    dispatch(resetNewShape());
+    dispatch(resetPolygons());
   }
 }
