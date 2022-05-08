@@ -20,18 +20,25 @@ export default function Polygon(props: IPolygonProps) {
 
   return (
     <Group>
-      <Line points={flattenPoints} closed={isClosed} stroke="black" />
+      <Line
+        points={flattenPoints}
+        closed={isClosed}
+        stroke="#1976d2"
+        fill="#c1dcf7"
+      />
       {!isClosed && pointerPosition && (
         <Line
           points={[...points[points.length - 1], ...pointerPosition]}
-          stroke="black"
+          stroke="#1976d2"
         />
       )}
       {points.map((point, j) => {
         const pointProps =
           isClosed && tool === TOOLS.SELECT
             ? {
+                onDragStart: handleDragStartPoint,
                 onDragMove: handleDragMovePoint,
+                onDragEnd: handleDragEndPoint,
               }
             : null;
 
@@ -50,8 +57,8 @@ export default function Polygon(props: IPolygonProps) {
             x={point[0]}
             y={point[1]}
             radius={5}
-            stroke="black"
-            fill="white"
+            stroke="#fafafa"
+            fill="#1976d2"
             draggable={isClosed && tool === TOOLS.SELECT}
             {...pointProps}
             {...startPointProps}
@@ -60,6 +67,10 @@ export default function Polygon(props: IPolygonProps) {
       })}
     </Group>
   );
+
+  function handleDragStartPoint(e: KonvaEventObject<MouseEvent>) {
+    e.target.scale({ x: 2, y: 2 });
+  }
 
   function handleDragMovePoint(e: KonvaEventObject<MouseEvent>) {
     const pointIndex = e.target.index - 1;
@@ -71,6 +82,10 @@ export default function Polygon(props: IPolygonProps) {
     ];
 
     dispatch(editPolygon({ ...polygon, points: newPoints }));
+  }
+
+  function handleDragEndPoint(e: KonvaEventObject<MouseEvent>) {
+    e.target.scale({ x: 1, y: 1 });
   }
 
   function handleMouseOverStartPoint(e: KonvaEventObject<MouseEvent>) {

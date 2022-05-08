@@ -4,12 +4,12 @@ import { TOOLS } from '../../constants';
 
 interface ICanvasSlice {
   tool: TTool;
-  pointerPosition: TPosition;
+  pointerPosition: TPosition | null;
 }
 
 const initialState: ICanvasSlice = {
   tool: TOOLS.POLYGON,
-  pointerPosition: [0, 0],
+  pointerPosition: null,
 };
 
 export const canvasSlice = createSlice({
