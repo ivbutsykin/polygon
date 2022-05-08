@@ -19,4 +19,4 @@ TypeScript, React, Redux, Konva, Material UI
 
 ## Demo
 
-![image](https://user-images.githubusercontent.com/42767822/167309733-9e95559d-f486-4a32-8bb9-783a74a724ac.png)
+![ezgif-3-f088f61c6b](https://user-images.githubusercontent.com/42767822/167309784-d657a75a-03c4-488d-bbee-d5efa236705c.gif)
