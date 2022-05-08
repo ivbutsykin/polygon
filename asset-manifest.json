@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/polygon/static/css/main.a1d0d77f.css",
+    "main.js": "/polygon/static/js/main.82e7cf12.js",
+    "index.html": "/polygon/index.html",
+    "main.a1d0d77f.css.map": "/polygon/static/css/main.a1d0d77f.css.map",
+    "main.82e7cf12.js.map": "/polygon/static/js/main.82e7cf12.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a1d0d77f.css",
+    "static/js/main.82e7cf12.js"
+  ]
+}
