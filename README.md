@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/ivbutsykin/polygon">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img width="80" height="80" src="https://img.icons8.com/nolan/64/polygon.png" alt="polygon"/>
   </a>
 
 <h3 align="center">Polygon</h3>
@@ -13,11 +13,9 @@
   </p>
 </div>
 
-<!-- ABOUT THE PROJECT -->
-
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img width="1163" alt="Screenshot 2024-02-03 at 15 52 56" src="https://github.com/ivbutsykin/polygon/assets/42767822/fbc6376a-5b08-4bac-a580-737c9dff60eb">
 
 Polygon Drawer is a friendly online tool where you can easily draw and play with shapes. No need to be an expert – just have fun creating your own polygons and designs effortlessly!"
 
