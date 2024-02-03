@@ -1,22 +1,47 @@
+<div align="center">
+  <a href="https://github.com/ivbutsykin/polygon">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-# Polygon
+<h3 align="center">Polygon</h3>
 
-Polygon drawing application
+  <p align="center">
+    Draw Shapes Easily: Your Simple Polygon Playground
+    <br />
+    <br />
+    <a href="https://ivbutsykin.github.io/polygon/">View Demo</a>
+  </p>
+</div>
 
+<!-- ABOUT THE PROJECT -->
 
-## Tech Stack
+## About The Project
 
-TypeScript, React, Redux, Konva, Material UI
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
+Polygon Drawer is a friendly online tool where you can easily draw and play with shapes. No need to be an expert – just have fun creating your own polygons and designs effortlessly!"
 
-## Features
+### Built With
 
-- Editing the polygon
-- Persisting data
-- Undo functionality
-- Adaptive design
+- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+- ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
+- [Konva](hthttps://github.com/konvajs/konva)
 
+## Installation
 
-## Demo
+1. Clone the repo
+   ```sh
+   git clone https://github.com/ivbutsykin/polygon.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
 
-![ezgif-3-f088f61c6b](https://user-images.githubusercontent.com/42767822/167309784-d657a75a-03c4-488d-bbee-d5efa236705c.gif)
+## Usage
+
+Execute the command:
+
+```sh
+npm start
+```
